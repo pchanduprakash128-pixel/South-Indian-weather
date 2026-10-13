@@ -221,32 +221,3 @@ export default function WeatherApp() {
     </section>
   </main>;
 }
-
-      
-<p style={muted}>
-  CAPE is not a thunderstorm warning by itself. Use official meteorological alerts for safety decisions.
-</p>
-    <section style={panelStyle}><span style={muted}>MORE WEATHER SOURCES</span><h2 style={{ margin: "6px 0 12px" }}>Forecast tools & official alerts</h2><div style={{ display: "grid", gap: 10 }}>
-      <a href="https://www.windy.com/" target="_blank" rel="noreferrer" style={{ color: "#8bd5ff" }}>Open Windy interactive weather map ↗</a>
-      <a 
-
-
-      <section style={panelStyle}>
-        <span style={muted}>MORE WEATHER SOURCES</span>
-        <h2 style={{ margin: "6px 0 12px" }}>
-          Forecast tools & official alerts
-        </h2>
-        <div style={{ display: "grid", gap: 10 }}>
-          <a href="https://www.windy.com/" target="_blank" rel="noreferrer" style={{ color: "#8bd5ff" }}>
-            Open Windy interactive weather map ↗
-          </a>
-          <a
-            href="https://meteologix.com/in/model-charts/multimodel"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#8bd5ff" }}
-          >
-            Open Meteologix weather charts ↗
-          </a>
-        </div>
-      </section>
