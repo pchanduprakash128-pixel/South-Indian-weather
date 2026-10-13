@@ -1,9 +1,10 @@
 
 :root {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #eaf2ff;
   background: #071426;
   font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -17,22 +18,25 @@ body {
   background: linear-gradient(160deg, #102b4b, #071426 55%);
 }
 
-button,
-select {
+button, select {
   font: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 .app {
-  width: min(100%, 760px);
+  width: min(100%, 850px);
   margin: 0 auto;
-  padding: 20px 16px 28px;
+  padding: 20px 15px 30px;
 }
 
 .topbar {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 
 .brand-icon {
@@ -40,26 +44,20 @@ select {
   place-items: center;
   width: 48px;
   height: 48px;
+  flex-shrink: 0;
   border-radius: 15px;
   background: #193b5d;
   font-size: 26px;
 }
 
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
 .topbar h1 {
-  margin-bottom: 3px;
+  margin: 0 0 3px;
   font-size: 19px;
 }
 
 .topbar p,
 .hero p {
-  margin-bottom: 0;
+  margin: 0;
   color: #a9bdd5;
   font-size: 13px;
 }
@@ -69,7 +67,7 @@ p {
   border: 1px solid #315477;
   border-radius: 23px;
   background: linear-gradient(135deg, #174c70, #183052);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .eyebrow {
@@ -91,21 +89,24 @@ p {
 
 .panel {
   padding: 20px 16px;
+  margin-bottom: 18px;
   border: 1px solid #233d59;
   border-radius: 22px;
   background: #0e2036;
+  min-width: 0;
 }
 
 .panel label {
   display: block;
-  margin-bottom: 9px;
+  margin: 12px 0 9px;
   color: #b8cce2;
   font-size: 13px;
 }
 
 select {
   width: 100%;
-  padding: 14px 12px;
+  min-height: 46px;
+  padding: 12px;
   color: #f1f6ff;
   background: #172d46;
   border: 1px solid #385471;
@@ -113,35 +114,46 @@ select {
   outline: none;
 }
 
+select:focus {
+  border-color: #64c9f4;
+}
+
 .location-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 27px 0 20px;
+  gap: 12px;
+  margin: 25px 0 20px;
 }
 
-.location-heading h2 {
-  margin: 5px 0 0;
-  font-size: 27px;
+.location-heading h2,
+.feature-panel h2 {
+  margin: 6px 0 12px;
+  font-size: 25px;
 }
 
 .location-icon {
   font-size: 25px;
 }
 
+.panel h3 {
+  margin: 18px 0 13px;
+  font-size: 17px;
+}
+
 .metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 9px;
-  margin-bottom: 28px;
+  margin-bottom: 26px;
 }
 
 .metric {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 8px;
   min-width: 0;
-  padding: 13px 10px;
+  padding: 13px 9px;
   border: 1px solid #2b4968;
   border-radius: 15px;
   background: #142a43;
@@ -152,19 +164,16 @@ select {
 }
 
 .metric small,
-.forecast-row small {
+.forecast-row small,
+.model-card small,
+.accumulation-grid small {
   color: #a7bdd4;
   font-size: 11px;
 }
 
 .metric strong {
-  font-size: clamp(13px, 3.5vw, 19px);
+  font-size: clamp(12px, 3.3vw, 18px);
   overflow-wrap: anywhere;
-}
-
-.panel h3 {
-  margin-bottom: 14px;
-  font-size: 18px;
 }
 
 .forecast-list {
@@ -174,10 +183,10 @@ select {
 
 .forecast-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) 28px minmax(65px, 0.9fr) 45px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(55px, 0.8fr) 42px;
   align-items: center;
-  gap: 8px;
-  padding: 15px 0;
+  gap: 9px;
+  padding: 14px 0;
   border-bottom: 1px solid #263d56;
 }
 
@@ -191,6 +200,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  min-width: 0;
 }
 
 .forecast-day strong,
@@ -202,11 +212,7 @@ select {
 .forecast-day small,
 .forecast-rain small,
 .forecast-temp small {
-  line-height: 1.3;
-}
-
-.forecast-icon {
-  font-size: 21px;
+  line-height: 1.4;
 }
 
 .forecast-temp {
@@ -219,41 +225,287 @@ select {
 
 .status,
 .error {
-  padding: 14px;
+  padding: 13px;
   color: #c7e5ff;
   background: #172d46;
+  border: 1px solid #385471;
   border-radius: 12px;
   font-size: 13px;
   line-height: 1.5;
 }
 
-.error button {
-  padding: 9px 12px;
-  color: white;
-  background: #28567e;
-  border: 0;
-  border-radius: 8px;
+.feature-panel > p {
+  color: #a9bdd5;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.map-frame {
+  width: 100%;
+  height: 350px;
+  margin-top: 15px;
+  overflow: hidden;
+  border: 1px solid #385471;
+  border-radius: 15px;
+  background: #142a43;
+  isolation: isolate;
+}
+
+.map-frame .leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #dce8ef;
+  font-family: inherit;
+  z-index: 1;
+}
+
+.map-frame .leaflet-control-attribution {
+  font-size: 9px;
+}
+
+.map-frame .leaflet-popup-content-wrapper,
+.map-frame .leaflet-popup-tip {
+  color: #10243b;
+}
+
+.source-note {
+  margin-top: 10px;
+  color: #8fa8c2;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 15px 0 20px;
+}
+
+.model-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  width: 100%;
+  min-width: 0;
+  padding: 14px 12px;
+  color: #eaf2ff;
+  text-align: left;
+  border: 1px solid #2b4968;
+  border-radius: 14px;
+  background: #142a43;
+}
+
+.model-card:focus,
+.model-card:active {
+  border-color: #57c6ef;
+}
+
+.model-card span {
+  color: #b9d5ec;
+  font-size: 12px;
+}
+
+.model-card strong {
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+
+.accumulation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 17px 0;
+}
+
+.accumulation-grid article {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 12px 8px;
+  background: #142a43;
+  border: 1px solid #2b4968;
+  border-radius: 13px;
+}
+
+.accumulation-grid strong {
+  font-size: clamp(12px, 3.3vw, 17px);
+  overflow-wrap: anywhere;
+}
+
+.chart-box {
+  margin: 18px 0;
+  padding: 13px 10px 10px;
+  border: 1px solid #29445f;
+  border-radius: 15px;
+  background: #0a1b2f;
+  overflow: hidden;
+}
+
+.chart-box h3 {
+  margin: 2px 0 18px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.bars {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 3px;
+  height: 155px;
+  padding-top: 5px;
+}
+
+.bar-item {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  min-width: 0;
+}
+
+.bar-item > span {
+  max-width: 100%;
+  color: #b8cce2;
+  font-size: 9px;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.bar-track {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 105px;
+  min-height: 10px;
+}
+
+.bar-fill {
+  width: min(75%, 17px);
+  min-height: 2px;
+  border-radius: 4px 4px 1px 1px;
+  background: linear-gradient(180deg, #66d7f5, #2088c5);
+}
+
+.bar-item small {
+  min-height: 13px;
+  color: #9fb4cc;
+  font-size: 9px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.table-scroll {
+  width: 100%;
+  margin-top: 18px;
+  overflow-x: auto;
+  border: 1px solid #29445f;
+  border-radius: 12px;
+}
+
+.model-table {
+  width: 100%;
+  min-width: 390px;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+
+.model-table th,
+.model-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #29445f;
+  white-space: nowrap;
+}
+
+.model-table th {
+  color: #8ed8ff;
+  background: #142a43;
+}
+
+.model-table td {
+  color: #d8e7f7;
+}
+
+.model-table tr:last-child td {
+  border-bottom: 0;
 }
 
 footer {
-  padding: 22px 5px 0;
+  padding: 18px 6px 0;
   color: #9cb1c9;
   font-size: 11px;
   line-height: 1.8;
   text-align: center;
 }
 
-@media (max-width: 380px) {
+@media (min-width: 650px) {
   .app {
-    padding: 14px 10px;
+    padding: 26px 22px 36px;
   }
 
   .panel {
-    padding: 16px 11px;
+    padding: 24px;
+  }
+
+  .map-frame {
+    height: 430px;
+  }
+
+  .model-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 380px) {
+  .app {
+    padding: 13px 9px 24px;
+  }
+
+  .panel {
+    padding: 15px 10px;
+  }
+
+  .hero {
+    padding: 20px 15px;
+  }
+
+  .metrics {
+    gap: 6px;
+  }
+
+  .metric {
+    padding: 10px 7px;
   }
 
   .forecast-row {
-    grid-template-columns: minmax(0, 1.3fr) 24px minmax(58px, 0.9fr) 38px;
     gap: 5px;
+    grid-template-columns: minmax(0, 1.3fr) minmax(48px, 0.8fr) 35px;
+  }
+
+  .map-frame {
+    height: 290px;
+  }
+
+  .accumulation-grid {
+    gap: 5px;
+  }
+
+  .accumulation-grid article {
+    padding: 10px 6px;
+  }
+
+  .bars {
+    gap: 1px;
+  }
+
+  .bar-item small {
+    font-size: 8px;
   }
 }
