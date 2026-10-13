@@ -201,9 +201,10 @@ export default function WeatherApp() {
       <BarChart title="Relative humidity (%)" values={hourValues("relative_humidity_2m")} unit="%" color="#a78bfa" />
       <BarChart title="Cloud cover (%)" values={hourValues("cloud_cover")} unit="%" color="#94a3b8" />
       <BarChart title="CAPE (J/kg)" values={hourValues("cape")} unit="J/kg" color="#fb7185" />
-      <p style={muted}>CAPE is not a thunderstorm warning by itself. Use official meteorological alerts for safety decisions.</p>
-    </section>}
-
+      
+<p style={muted}>
+  CAPE is not a thunderstorm warning by itself. Use official meteorological alerts for safety decisions.
+</p>
     <section style={panelStyle}><span style={muted}>MORE WEATHER SOURCES</span><h2 style={{ margin: "6px 0 12px" }}>Forecast tools & official alerts</h2><div style={{ display: "grid", gap: 10 }}>
       <a href="https://www.windy.com/" target="_blank" rel="noreferrer" style={{ color: "#8bd5ff" }}>Open Windy interactive weather map ↗</a>
       <a 
